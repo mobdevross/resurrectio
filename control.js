@@ -74,6 +74,8 @@ RecorderUI.prototype.set_started = function() {
   e.style.display = 'none';
   e = document.getElementById("bexportxy");
   e.style.display = 'none';
+    e = document.getElementById("bexportselenium");
+    e.style.display = 'none';
   e = document.getElementById("bdoc");
   e.style.display = 'none';
 }
@@ -95,6 +97,8 @@ RecorderUI.prototype.set_stopped = function() {
 	e.style.display = '';
   e = document.getElementById("bexportxy");
   e.style.display = '';
+    e = document.getElementById("bexportselenium");
+    e.style.display = '';
   e = document.getElementById("bdoc");
   e.style.display = '';
 }
@@ -141,6 +145,10 @@ RecorderUI.prototype.exportdoc = function(bexport) {
     chrome.tabs.create({url: "./doc.html"});
 }
 
+RecorderUI.prototype.exportselenium = function(bexport) {
+    chrome.tabs.create({url: "./selenium.html"});
+}
+
 var ui;
 
 // bind events to ui elements
@@ -150,6 +158,7 @@ window.onload = function(){
     document.querySelector('input#bcomment').onclick=function() {ui.showcomment(); return false;};
     document.querySelector('input#bexport').onclick=function() {ui.export(); return false;};
     document.querySelector('input#bexportxy').onclick=function() {ui.export({xy: true}); return false;};
+    document.querySelector('input#bexportselenium').onclick=function() {ui.exportselenium(); return false;};
     document.querySelector('input#bdoc').onclick=function() {ui.exportdoc(); return false;};
     document.querySelector('input#bsavecomment').onclick=function() {ui.hidecomment(true); return false;};
     document.querySelector('input#bcancelcomment').onclick=function() {ui.hidecomment(false); return false;};
